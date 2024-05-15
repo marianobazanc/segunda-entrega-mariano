@@ -1,0 +1,37 @@
+<main>
+    <section >
+        <h2>Productos</h2>
+        {{#each productos}}
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-md-4 my-auto">
+                    <div class="card card-body">
+                        <h5 class="">{{this.title}}</h5>
+                        <p class=""><strong>Descripcion: </strong> {{this.description}}</p>
+                        <p class=""><strong>Precio: </strong>${{this.price}}</p>
+                        <p class=""><strong>Categoria: </strong>{{this.category}}</p>
+                        <form action="/products" method="post">
+                        <section>
+                            <input id="txtCantidad" type="text" name="txtCantidad" placeholder="Cantidad" class="form-control mb-3" />
+                            <input id="carId" type="text"  name="carId" placeholder="Id de carrito" class="form-control rounded-0 mb-3" />
+                            <input type="text" name="prodId" value="{{this._id}}" style="display: none;">
+                            <button class="btn btn-success">Añadir al carrito</button>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {{/each}}
+
+        <center>
+            
+            {{#if hasPrevPage}}
+                <a href="/products?nropage={{prevPage}}">⬅️</a>
+            {{/if}}
+            <label>{{page}}</label>
+            {{#if hasNextPage}}
+                <a href="/products?nropage={{nextPage}}">➡️</a>
+            {{/if}}
+        </center>
+    </section>
+</main>
